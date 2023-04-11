@@ -6,6 +6,9 @@ from config.settings import TG_TOKEN, TG_CHAT
 
 from message.message import MESSAGE_START
 
+
+print("Projectbw-bot")
+
 # set the username or ID of the channel you want to get the ID for
 target_chat_id = int(TG_CHAT)
 
