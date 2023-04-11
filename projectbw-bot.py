@@ -6,6 +6,8 @@ from config.settings import TG_TOKEN, TG_CHAT
 
 from message.message import MESSAGE_START
 
+from message.button import BUT_FAQ, BUT_SUPPORT, BUT_BACK
+
 #from git import Repo
 #Repo.clone_from('https://github.com/bwproject/projectbw-support-bot.git','main')
 
@@ -21,8 +23,8 @@ bot = telebot.TeleBot(TG_TOKEN)
 
 # define the custom keyboard
 keyboard_main = ReplyKeyboardMarkup(row_width=1, one_time_keyboard=True)
-faq_button = KeyboardButton('F.A.Q – «часто задаваемые вопросы»')
-support_button = KeyboardButton('Задать вопрос')
+faq_button = KeyboardButton(KEY_FAQ)
+support_button = KeyboardButton(BUT_SUPPORT)
 keyboard_main.add(faq_button, support_button)
 
 keyboard_faq = ReplyKeyboardMarkup(row_width=3, one_time_keyboard=True)
@@ -33,7 +35,7 @@ main_menu_button = KeyboardButton('Главное меню')
 keyboard_faq.add(faq1_button, faq2_button, faq3_button, main_menu_button)
 
 keyboard_back = ReplyKeyboardMarkup(row_width=2, one_time_keyboard=True)
-back_button = KeyboardButton('Назад')
+back_button = KeyboardButton(BUT_BACK)
 keyboard_back.add(back_button, main_menu_button)
 
 # define a handler for the /start command
@@ -49,7 +51,7 @@ def handle_restart(message):
     bot.send_message(chat_id=message.chat.id, text=MESSAGE_START,reply_markup=keyboard_main)
 
 # define the message handler for the "FAQ" message
-@bot.message_handler(func=lambda message: message.text == 'F.A.Q – «часто задаваемые вопросы»')
+@bot.message_handler(func=lambda message: message.text == KEY_FAQ)
 def handle_faq_option(message):
     bot.send_message(chat_id=message.chat.id, text="Выберите один из часто задаваемых вопросов ниже, чтобы узнать больше.", reply_markup=keyboard_faq)
 
@@ -78,13 +80,10 @@ def handle_back_option(message):
 
 @bot.message_handler(func=lambda message: message.text == 'Главное меню')
 def handle_main_menu_option(message):
-    bot.send_message(chat_id=message.chat.id, text="""\
-Здравствуйте, добро пожаловать в чат-бот службы поддержки ProjectBW! 
-Пожалуйста, выберите один из вариантов ниже.\
-""", reply_markup=keyboard_main)
+    bot.send_message(chat_id=message.chat.id, text=MESSAGE_START, reply_markup=keyboard_main)
 
 # define the message handler for the "Support" message
-@bot.message_handler(func=lambda message: message.text == 'Задать вопрос')
+@bot.message_handler(func=lambda message: message.text == BUT_SUPPORT)
 def handle_support_option(message):
     bot.send_message(chat_id=message.chat.id, text='Напишите свое сообщение прямо в чате.', reply_markup=keyboard_back)
 
