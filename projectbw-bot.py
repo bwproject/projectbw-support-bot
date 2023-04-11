@@ -41,13 +41,13 @@ keyboard_back.add(back_button, main_menu_button)
 @bot.message_handler(commands=['start'])
 def start_message(message):
     # set the welcome message adn the main menu keyboard
-    bot.send_message(chat_id=message.chat.id, text=MESSAGE_START,reply_markup=keyboard_main, parse_mode='Markdown')
+    bot.send_message(chat_id=message.chat.id, text=MESSAGE_START, reply_markup=keyboard_main, parse_mode='Markdown')
 
 # define the message handler for the restart command
 @bot.message_handler(commands=['restart'])
 def handle_restart(message):    
     # set the welcome message adn the main menu keyboard
-    bot.send_message(chat_id=message.chat.id, text=MESSAGE_START,reply_markup=keyboard_main, parse_mode='Markdown')
+    bot.send_message(chat_id=message.chat.id, text=MESSAGE_START, reply_markup=keyboard_main, parse_mode='Markdown')
 
 # define the message handler for the "FAQ" message
 @bot.message_handler(func=lambda message: message.text == BUT_FAQ)
