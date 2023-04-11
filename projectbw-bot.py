@@ -51,7 +51,7 @@ def handle_restart(message):
     bot.send_message(chat_id=message.chat.id, text=MESSAGE_START,reply_markup=keyboard_main)
 
 # define the message handler for the "FAQ" message
-@bot.message_handler(func=lambda message: message.text == KEY_FAQ)
+@bot.message_handler(func=lambda message: message.text == BUT_FAQ)
 def handle_faq_option(message):
     bot.send_message(chat_id=message.chat.id, text="Выберите один из часто задаваемых вопросов ниже, чтобы узнать больше.", reply_markup=keyboard_faq)
 
