@@ -20,8 +20,8 @@ keyboard_main.add(faq_button, support_button)
 
 keyboard_faq = ReplyKeyboardMarkup(row_width=3, one_time_keyboard=True)
 faq1_button = KeyboardButton('Забыли свой Пароль')
-faq2_button = KeyboardButton('2?')
-faq3_button = KeyboardButton('3?')
+faq2_button = KeyboardButton('Вопрос 2?')
+faq3_button = KeyboardButton('Вопрос 3?')
 main_menu_button = KeyboardButton('Главное меню')
 keyboard_faq.add(faq1_button, faq2_button, faq3_button, main_menu_button)
 
