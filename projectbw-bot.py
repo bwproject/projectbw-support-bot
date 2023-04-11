@@ -8,6 +8,8 @@ from message.message import MESSAGE_START, MESSAGE_FAQ, MESSAGE_SUPPORT
 
 from message.button import BUT_FAQ, BUT_SUPPORT, BUT_BACK, BUT_MENU
 
+from message.faq import FAQ_1, FAQ_1_1
+
 print("Projectbw-bot")
 print("https://github.com/bwproject/projectbw-support-bot")
 
@@ -24,11 +26,12 @@ support_button = KeyboardButton(BUT_SUPPORT)
 keyboard_main.add(faq_button, support_button)
 
 keyboard_faq = ReplyKeyboardMarkup(row_width=3, one_time_keyboard=True)
-faq1_button = KeyboardButton('Забыли свой Пароль')
-faq2_button = KeyboardButton('Вопрос 2?')
-faq3_button = KeyboardButton('Вопрос 3?')
+faq1_button = KeyboardButton(FAQ_1)
+faq2_button = KeyboardButton(FAQ_2)
+faq3_button = KeyboardButton(FAQ_3)
+faqall_button = KeyboardButton(FAQ_ALL)
 main_menu_button = KeyboardButton(BUT_MENU)
-keyboard_faq.add(faq1_button, faq2_button, faq3_button, main_menu_button)
+keyboard_faq.add(faq1_button, faq2_button, faq3_button,faqall_button, main_menu_button)
 
 keyboard_back = ReplyKeyboardMarkup(row_width=2, one_time_keyboard=True)
 back_button = KeyboardButton(BUT_BACK)
@@ -52,23 +55,24 @@ def handle_faq_option(message):
     bot.send_message(chat_id=message.chat.id, text=MESSAGE_FAQ, reply_markup=keyboard_faq)
 
 # define the message handler for the "FAQ#1" command
-@bot.message_handler(func=lambda message: message.text == 'Забыли свой Пароль')
+@bot.message_handler(func=lambda message: message.text == FAQ_1)
 def faq_message(message):
-    bot.reply_to(message, """\
-Если вы забыли свой пароль используйте Раздел Забыли свой пароль
-на wiki.projectbw.ru 
-https://wiki.projectbw.ru/faq/#%D0%B7%D0%B0%D0%B1%D1%8B%D0%BB%D0%B8-%D0%BF%D0%B0%D1%80%D0%BE%D0%BB%D1%8C\
-""", reply_markup=keyboard_back)
+    bot.reply_to(message,FAQ_1_1, reply_markup=keyboard_back)
 
 # define the message handler for the "FAQ#2" command
-@bot.message_handler(func=lambda message: message.text == 'How to create a new strategy?')
+@bot.message_handler(func=lambda message: message.text == FAQ_2)
 def faq_message(message):
-    bot.reply_to(message, "Answer 2.", reply_markup=keyboard_back)    
+    bot.reply_to(message, FAQ_2_1, reply_markup=keyboard_back)    
 
 # define the message handler for the "FAQ#3" command
-@bot.message_handler(func=lambda message: message.text == 'How to create a new order?')
+@bot.message_handler(func=lambda message: message.text == FAQ_3)
 def faq_message(message):
-    bot.reply_to(message, "Answer 3.", reply_markup=keyboard_back)
+    bot.reply_to(message, FAQ_3_1, reply_markup=keyboard_back)
+    
+# define the message handler for the "FAQ_ALL" command
+@bot.message_handler(func=lambda message: message.text == FAQ_ALL)
+def faq_message(message):
+    bot.reply_to(message, FAQ_ALL_1, reply_markup=keyboard_back)   
 
 @bot.message_handler(func=lambda message: message.text == BUT_BACK)
 def handle_back_option(message):
