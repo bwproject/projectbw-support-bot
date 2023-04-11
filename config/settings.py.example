@@ -1,0 +1,5 @@
+# settings.py
+TG_TOKEN='ТОКЕН БОТА'
+# Брать у @BotFather
+TG_CHAT='ID ЧАТА'
+# Id Приватного чата ()
