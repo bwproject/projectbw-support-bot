@@ -9,7 +9,7 @@ FAQ_1_1="""\
 FAQ_2='FAQ 2'
 FAQ_2_1="""\
 Ответ на FAQ 2:
-[<wiki.projectbw.ru>](https://wiki.projectbw.ru/faq/)
+[wiki.projectbw.ru](https://wiki.projectbw.ru/faq/)
 \
 """
 FAQ_3='FAQ 3'
