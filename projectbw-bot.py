@@ -8,10 +8,6 @@ from message.message import MESSAGE_START
 
 from message.button import BUT_FAQ, BUT_SUPPORT, BUT_BACK
 
-#from git import Repo
-#Repo.clone_from('https://github.com/bwproject/projectbw-support-bot.git','main')
-
-
 print("Projectbw-bot")
 print("https://github.com/bwproject/projectbw-support-bot")
 
