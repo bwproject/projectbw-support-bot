@@ -8,7 +8,7 @@ from message.message import MESSAGE_START, MESSAGE_FAQ, MESSAGE_SUPPORT
 
 from message.button import BUT_FAQ, BUT_SUPPORT, BUT_BACK, BUT_MENU
 
-from message.faq import FAQ_1, FAQ_1_1
+from message.faq import FAQ_1, FAQ_1_1, FAQ_2, FAQ_2_1, FAQ_3, FAQ_3_1, FAQ_ALL, FAQ_ALL_1
 
 print("Projectbw-bot")
 print("https://github.com/bwproject/projectbw-support-bot")
