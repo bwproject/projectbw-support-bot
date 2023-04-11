@@ -4,9 +4,9 @@ from telebot.types import ReplyKeyboardMarkup, KeyboardButton, Message
 
 from config.settings import TG_TOKEN, TG_CHAT
 
-from message.message import MESSAGE_START
+from message.message import MESSAGE_START, MESSAGE_FAQ, MESSAGE_SUPPORT
 
-from message.button import BUT_FAQ, BUT_SUPPORT, BUT_BACK
+from message.button import BUT_FAQ, BUT_SUPPORT, BUT_BACK, BUT_MENU
 
 print("Projectbw-bot")
 print("https://github.com/bwproject/projectbw-support-bot")
@@ -27,7 +27,7 @@ keyboard_faq = ReplyKeyboardMarkup(row_width=3, one_time_keyboard=True)
 faq1_button = KeyboardButton('Забыли свой Пароль')
 faq2_button = KeyboardButton('Вопрос 2?')
 faq3_button = KeyboardButton('Вопрос 3?')
-main_menu_button = KeyboardButton('Главное меню')
+main_menu_button = KeyboardButton(BUT_MENU)
 keyboard_faq.add(faq1_button, faq2_button, faq3_button, main_menu_button)
 
 keyboard_back = ReplyKeyboardMarkup(row_width=2, one_time_keyboard=True)
@@ -49,7 +49,7 @@ def handle_restart(message):
 # define the message handler for the "FAQ" message
 @bot.message_handler(func=lambda message: message.text == BUT_FAQ)
 def handle_faq_option(message):
-    bot.send_message(chat_id=message.chat.id, text="Выберите один из часто задаваемых вопросов ниже, чтобы узнать больше.", reply_markup=keyboard_faq)
+    bot.send_message(chat_id=message.chat.id, text=MESSAGE_FAQ, reply_markup=keyboard_faq)
 
 # define the message handler for the "FAQ#1" command
 @bot.message_handler(func=lambda message: message.text == 'Забыли свой Пароль')
@@ -70,18 +70,18 @@ def faq_message(message):
 def faq_message(message):
     bot.reply_to(message, "Answer 3.", reply_markup=keyboard_back)
 
-@bot.message_handler(func=lambda message: message.text == 'Назад')
+@bot.message_handler(func=lambda message: message.text == BUT_BACK)
 def handle_back_option(message):
-    bot.send_message(chat_id=message.chat.id, text="Выберите один из часто задаваемых вопросов ниже, чтобы узнать больше.", reply_markup=keyboard_faq)
+    bot.send_message(chat_id=message.chat.id, text=MESSAGE_FAQ, reply_markup=keyboard_faq)
 
-@bot.message_handler(func=lambda message: message.text == 'Главное меню')
+@bot.message_handler(func=lambda message: message.text == BUT_MENU)
 def handle_main_menu_option(message):
     bot.send_message(chat_id=message.chat.id, text=MESSAGE_START, reply_markup=keyboard_main)
 
 # define the message handler for the "Support" message
 @bot.message_handler(func=lambda message: message.text == BUT_SUPPORT)
 def handle_support_option(message):
-    bot.send_message(chat_id=message.chat.id, text='Напишите свое сообщение прямо в чате.', reply_markup=keyboard_back)
+    bot.send_message(chat_id=message.chat.id, text=MESSAGE_SUPPORT, reply_markup=keyboard_back)
 
 @bot.message_handler(chat_types=["private"])
 def forward_message(message: Message):
