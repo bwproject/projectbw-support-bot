@@ -8,6 +8,7 @@ from message.message import MESSAGE_START
 
 
 print("Projectbw-bot")
+print("https://github.com/bwproject/projectbw-support-bot")
 
 # set the username or ID of the channel you want to get the ID for
 target_chat_id = int(TG_CHAT)
