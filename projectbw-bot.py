@@ -23,7 +23,7 @@ bot = telebot.TeleBot(TG_TOKEN)
 
 # define the custom keyboard
 keyboard_main = ReplyKeyboardMarkup(row_width=1, one_time_keyboard=True)
-faq_button = KeyboardButton(KEY_FAQ)
+faq_button = KeyboardButton(BUT_FAQ)
 support_button = KeyboardButton(BUT_SUPPORT)
 keyboard_main.add(faq_button, support_button)
 
