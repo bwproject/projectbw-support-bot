@@ -6,8 +6,8 @@ from config.settings import TG_TOKEN, TG_CHAT
 
 from message.message import MESSAGE_START
 
-from git import Repo
-Repo.clone_from('https://github.com/bwproject/projectbw-support-bot.git','main')
+#from git import Repo
+#Repo.clone_from('https://github.com/bwproject/projectbw-support-bot.git','main')
 
 
 print("Projectbw-bot")
