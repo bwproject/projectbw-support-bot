@@ -50,7 +50,8 @@ keyboard_faq.add(faq1_button, faq2_button, faq3_button,faqall_button, main_menu_
 
 keyboard_back = ReplyKeyboardMarkup(row_width=2, one_time_keyboard=True)
 back_button = KeyboardButton(BUT_BACK)
-keyboard_back.add(back_button, main_menu_button)
+#keyboard_back.add(back_button, main_menu_button)
+keyboard_back.add(main_menu_button)
 
 keyboard_support = ReplyKeyboardMarkup(row_width=1, one_time_keyboard=True)
 support1_button = KeyboardButton(BUT_SUPPORT2)
