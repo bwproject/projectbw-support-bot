@@ -16,6 +16,15 @@ MESSAGE_SUPPORT="""\
 \
 """
 MESSAGE_BOT="""\
-О Боте
+Бот был написан спецально для сервера ProjectBW.ru
+
+Полезные ссылки:
+[ProjectBW](https://projectbw.ru/)
+[Wiki ProjectBW](https://wiki.projectbw.ru/faq)
+[Сервер Recration](https://wiki.projectbw.ru/faq)
+Полезные ссылки о боте:
+[Как пользоваться ботом](https://wiki.projectbw.ru/faq)
+[Исходный код бота](https://wiki.projectbw.ru/faq)
+[Автор Бота](https://wiki.projectbw.ru/faq)
 \
 """
