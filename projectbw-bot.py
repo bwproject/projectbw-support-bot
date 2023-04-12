@@ -135,7 +135,7 @@ def forward_response(message: Message):
         user_id = message.reply_to_message.forward_from.id
         # send the response back to the user
         # отправить ответ обратно пользователю
-        bot.send_photo(message.chat.id, message.photo)
+        #bot.send_photo(message.chat.id, message.photo)
         bot.send_message(user_id, message.text)
 
 # start the bot
