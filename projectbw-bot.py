@@ -3,7 +3,7 @@ import logging
 
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton, Message
 
-from config.settings import TG_TOKEN, TG_CHAT
+from config.settings import TG_TOKEN, TG_CHAT, TH_CHAT2
 
 from message.message import MESSAGE_START, MESSAGE_FAQ, MESSAGE_SUPPORT, MESSAGE_BOT
 
@@ -25,7 +25,8 @@ telebot.logger.setLevel(logging.DEBUG)
 
 # set the username or ID of the channel you want to get the ID for
 # установите имя пользователя или идентификатор канала, для которого вы хотите получить идентификатор
-target_chat_id = int(TG_CHAT)
+target_chat_id1 = int(TG_CHAT)
+target_chat_id1 = int(TG_CHAT2)
 
 # replace the token with your bot's token
 # замените токен на токен вашего бота
@@ -105,8 +106,7 @@ def handle_main_menu_option(message):
     bot.send_message(chat_id=message.chat.id, text=MESSAGE_START, reply_markup=keyboard_main, parse_mode='Markdown')
 
 @bot.message_handler(func=lambda message: message.text == BUT_BOT)
-def handle_main_menu_option(message):
-    #bot.send_photo(chat_id=message.chat.id, photo=photo1, text=MESSAGE_BOT, reply_markup=keyboard_main, parse_mode='Markdown')  
+def handle_main_menu_option(message):  
     bot.send_message(chat_id=message.chat.id, text=MESSAGE_BOT, reply_markup=keyboard_main, parse_mode='Markdown')
 
 # define the message handler for the "Support" message
@@ -120,7 +120,7 @@ def handle_support_option(message):
 def forward_message(message: Message):
     # forward the message to the channel
     # переслать сообщение на канал
-    bot.forward_message(target_chat_id, message.chat.id, message.message_id)
+    bot.forward_message(target_chat_id1, message.chat.id, message.message_id)
 
 # create a handler function to receive responses from the channel
 # создаем функцию-обработчик для получения ответов от канала
