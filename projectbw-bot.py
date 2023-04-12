@@ -118,7 +118,7 @@ def forward_message(message: Message):
 # create a handler function to receive responses from the channel
 # создаем функцию-обработчик для получения ответов от канала
 ##@bot.message_handler(chat_types=["group"], func=lambda message: message.chat.id == target_chat_id)
-@bot.message_handler(chat_types=["group"], func=lambda message: message.chat.id == target_chat_id, content_types=['text', 'photo', 'document'])
+@bot.message_handler(func=lambda message: message.chat.id == target_chat_id, content_types=['text', 'photo', 'document'])
 def forward_response(message: Message):
     # check if the message was a reply to a message forwarded by the bot
     # проверить, было ли сообщение ответом на сообщение, отправленное ботом    
