@@ -13,11 +13,8 @@ from message.faq import FAQ_1, FAQ_1_1, FAQ_2, FAQ_2_1, FAQ_3, FAQ_3_1, FAQ_ALL,
 
 #photo1 = open('img/5726DD2C-E438-4FD0-A371-0CE0CE6C4659.jpeg', 'rb')
 
-print()
 print("Projectbw-bot")
-print()
 print("https://github.com/bwproject/projectbw-support-bot")
-print()
 
 # set the username or ID of the channel you want to get the ID for
 # установите имя пользователя или идентификатор канала, для которого вы хотите получить идентификатор
