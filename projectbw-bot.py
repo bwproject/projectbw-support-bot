@@ -6,7 +6,7 @@ from config.settings import TG_TOKEN, TG_CHAT
 
 from message.message import MESSAGE_START, MESSAGE_FAQ, MESSAGE_SUPPORT
 
-from message.button import BUT_FAQ, BUT_SUPPORT, BUT_BACK, BUT_MENU
+from message.button import BUT_FAQ, BUT_SUPPORT, BUT_BACK, BUT_MENU, BUT_BOT
 
 from message.faq import FAQ_1, FAQ_1_1, FAQ_2, FAQ_2_1, FAQ_3, FAQ_3_1, FAQ_ALL, FAQ_ALL_1
 
@@ -23,7 +23,8 @@ bot = telebot.TeleBot(TG_TOKEN)
 keyboard_main = ReplyKeyboardMarkup(row_width=1, one_time_keyboard=True)
 faq_button = KeyboardButton(BUT_FAQ)
 support_button = KeyboardButton(BUT_SUPPORT)
-keyboard_main.add(faq_button, support_button)
+bot_button = KeyboardButton(BUT_BOT)
+keyboard_main.add(faq_button, support_button, bot_button)
 
 keyboard_faq = ReplyKeyboardMarkup(row_width=3, one_time_keyboard=True)
 faq1_button = KeyboardButton(FAQ_1)
