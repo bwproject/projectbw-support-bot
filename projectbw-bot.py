@@ -26,7 +26,7 @@ telebot.logger.setLevel(logging.DEBUG)
 # set the username or ID of the channel you want to get the ID for
 # установите имя пользователя или идентификатор канала, для которого вы хотите получить идентификатор
 target_chat_id1 = int(TG_CHAT)
-target_chat_id1 = int(TG_CHAT2)
+target_chat_id2 = int(TG_CHAT2)
 
 # replace the token with your bot's token
 # замените токен на токен вашего бота
