@@ -3,7 +3,7 @@ import logging
 
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton, Message
 
-from config.settings import TG_TOKEN, TG_CHAT, TH_CHAT2
+from config.settings import TG_TOKEN, TG_CHAT, TG_CHAT2
 
 from message.message import MESSAGE_START, MESSAGE_FAQ, MESSAGE_SUPPORT, MESSAGE_SUPPORT2, MESSAGE_SUPPORT3, MESSAGE_BOT
 
