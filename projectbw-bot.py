@@ -4,7 +4,7 @@ from telebot.types import ReplyKeyboardMarkup, KeyboardButton, Message
 
 from config.settings import TG_TOKEN, TG_CHAT
 
-from message.message import MESSAGE_START, MESSAGE_FAQ, MESSAGE_SUPPORT
+from message.message import MESSAGE_START, MESSAGE_FAQ, MESSAGE_SUPPORT, MESSAGE_BOT
 
 from message.button import BUT_FAQ, BUT_SUPPORT, BUT_BACK, BUT_MENU, BUT_BOT
 
@@ -82,6 +82,10 @@ def handle_back_option(message):
 @bot.message_handler(func=lambda message: message.text == BUT_MENU)
 def handle_main_menu_option(message):
     bot.send_message(chat_id=message.chat.id, text=MESSAGE_START, reply_markup=keyboard_main, parse_mode='Markdown')
+
+@bot.message_handler(func=lambda message: message.text == BUT_BOT)
+def handle_main_menu_option(message):
+    bot.send_message(chat_id=message.chat.id, text=MESSAGE_BOT, reply_markup=keyboard_main, parse_mode='Markdown')
 
 # define the message handler for the "Support" message
 @bot.message_handler(func=lambda message: message.text == BUT_SUPPORT)
