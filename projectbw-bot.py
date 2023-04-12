@@ -50,8 +50,8 @@ keyboard_faq.add(faq1_button, faq2_button, faq3_button,faqall_button, main_menu_
 
 keyboard_back = ReplyKeyboardMarkup(row_width=2, one_time_keyboard=True)
 back_button = KeyboardButton(BUT_BACK)
-#keyboard_back.add(back_button, main_menu_button)
-keyboard_back.add(main_menu_button)
+keyboard_back.add(back_button, main_menu_button)
+#keyboard_back.add(main_menu_button)
 
 keyboard_support = ReplyKeyboardMarkup(row_width=1, one_time_keyboard=True)
 support1_button = KeyboardButton(BUT_SUPPORT2)
@@ -124,7 +124,7 @@ def handle_supportall_option(message):
 # PROJECTBW САПОРТ
 @bot.message_handler(func=lambda message: message.text == BUT_SUPPORT2)
 def handle_supportbw_option(message):
-    bot.send_message(chat_id=message.chat.id, text=MESSAGE_SUPPORT2, reply_markup=keyboard_back, parse_mode='Markdown')    
+    bot.send_message(chat_id=message.chat.id, text=MESSAGE_SUPPORT2, reply_markup=keyboard_support, parse_mode='Markdown')    
     
 @bot.message_handler(func=lambda message: message.chat.type == 'private', content_types=['text', 'photo', 'document'])
 def forward_message(message: Message):
@@ -144,13 +144,12 @@ def forward_response(message: Message):
         user_id = message.reply_to_message.forward_from.id
         # send the response back to the user
         # отправить ответ обратно пользователю
-        #bot.send_photo(message.chat.id, message.photo)
         bot.send_message(user_id, message.text)
         
 # REC САПОРТ
 @bot.message_handler(func=lambda message: message.text == BUT_SUPPORT3)
 def handle_supportrc_option(message):
-    bot.send_message(chat_id=message.chat.id, text=MESSAGE_SUPPORT3, reply_markup=keyboard_back, parse_mode='Markdown')    
+    bot.send_message(chat_id=message.chat.id, text=MESSAGE_SUPPORT3, reply_markup=keyboard_support, parse_mode='Markdown')    
     
 @bot.message_handler(func=lambda message: message.chat.type == 'private', content_types=['text', 'photo', 'document'])
 def forward_message(message: Message):
@@ -170,7 +169,6 @@ def forward_response(message: Message):
         user_id = message.reply_to_message.forward_from.id
         # send the response back to the user
         # отправить ответ обратно пользователю
-        #bot.send_photo(message.chat.id, message.photo)
         bot.send_message(user_id, message.text)        
 
 # start the bot
