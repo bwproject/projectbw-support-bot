@@ -55,7 +55,7 @@ keyboard_back.add(back_button, main_menu_button)
 keyboard_support = ReplyKeyboardMarkup(row_width=1, one_time_keyboard=True)
 support1_button = KeyboardButton(BUT_SUPPORT2)
 support2_button = KeyboardButton(BUT_SUPPORT3)
-keyboard_main.add(support1_button, support2_button,back_button, main_menu_button)
+keyboard_support.add(support1_button, support2_button,back_button, main_menu_button)
 
 # define a handler for the /start command
 # определяем обработчик команды /start
