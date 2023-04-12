@@ -3,11 +3,11 @@ import logging
 
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton, Message
 
-from config.settings import TG_TOKEN, TG_CHAT, TG_CHAT2
+from config.settings import TG_TOKEN, TG_CHAT
 
-from message.message import MESSAGE_START, MESSAGE_FAQ, MESSAGE_SUPPORT, MESSAGE_SUPPORT2, MESSAGE_SUPPORT3, MESSAGE_BOT
+from message.message import MESSAGE_START, MESSAGE_FAQ, MESSAGE_SUPPORT, MESSAGE_BOT
 
-from message.button import BUT_FAQ, BUT_SUPPORT, BUT_SUPPORT2, BUT_SUPPORT3, BUT_BACK, BUT_MENU, BUT_BOT
+from message.button import BUT_FAQ, BUT_SUPPORT, BUT_BACK, BUT_MENU, BUT_BOT
 
 from message.faq import FAQ_1, FAQ_1_1, FAQ_2, FAQ_2_1, FAQ_3, FAQ_3_1, FAQ_ALL, FAQ_ALL_1
 
@@ -25,8 +25,7 @@ telebot.logger.setLevel(logging.DEBUG)
 
 # set the username or ID of the channel you want to get the ID for
 # установите имя пользователя или идентификатор канала, для которого вы хотите получить идентификатор
-target_chat_id1 = int(TG_CHAT)
-target_chat_id2 = int(TG_CHAT2)
+target_chat_id = int(TG_CHAT)
 
 # replace the token with your bot's token
 # замените токен на токен вашего бота
@@ -40,7 +39,7 @@ support_button = KeyboardButton(BUT_SUPPORT)
 bot_button = KeyboardButton(BUT_BOT)
 keyboard_main.add(faq_button, support_button, bot_button)
 
-keyboard_faq = ReplyKeyboardMarkup(row_width=1, one_time_keyboard=True)
+keyboard_faq = ReplyKeyboardMarkup(row_width=3, one_time_keyboard=True)
 faq1_button = KeyboardButton(FAQ_1)
 faq2_button = KeyboardButton(FAQ_2)
 faq3_button = KeyboardButton(FAQ_3)
@@ -51,12 +50,6 @@ keyboard_faq.add(faq1_button, faq2_button, faq3_button,faqall_button, main_menu_
 keyboard_back = ReplyKeyboardMarkup(row_width=2, one_time_keyboard=True)
 back_button = KeyboardButton(BUT_BACK)
 keyboard_back.add(back_button, main_menu_button)
-#keyboard_back.add(main_menu_button)
-
-keyboard_support = ReplyKeyboardMarkup(row_width=1, one_time_keyboard=True)
-support1_button = KeyboardButton(BUT_SUPPORT2)
-support2_button = KeyboardButton(BUT_SUPPORT3)
-keyboard_support.add(support1_button, support2_button, main_menu_button)
 
 # define a handler for the /start command
 # определяем обработчик команды /start
@@ -112,29 +105,26 @@ def handle_main_menu_option(message):
     bot.send_message(chat_id=message.chat.id, text=MESSAGE_START, reply_markup=keyboard_main, parse_mode='Markdown')
 
 @bot.message_handler(func=lambda message: message.text == BUT_BOT)
-def handle_main_menu_option(message):  
+def handle_main_menu_option(message):
+    #bot.send_photo(chat_id=message.chat.id, photo=photo1, text=MESSAGE_BOT, reply_markup=keyboard_main, parse_mode='Markdown')  
     bot.send_message(chat_id=message.chat.id, text=MESSAGE_BOT, reply_markup=keyboard_main, parse_mode='Markdown')
 
 # define the message handler for the "Support" message
 # определяем обработчик сообщения "Поддержка"
 @bot.message_handler(func=lambda message: message.text == BUT_SUPPORT)
-def handle_supportall_option(message):
-    bot.send_message(chat_id=message.chat.id, text=MESSAGE_SUPPORT, reply_markup=keyboard_support, parse_mode='Markdown')
+def handle_support_option(message):
+    bot.send_message(chat_id=message.chat.id, text=MESSAGE_SUPPORT, reply_markup=keyboard_back, parse_mode='Markdown')
 
-# PROJECTBW САПОРТ
-@bot.message_handler(func=lambda message: message.text == BUT_SUPPORT2)
-def handle_supportbw_option(message):
-    bot.send_message(chat_id=message.chat.id, text=MESSAGE_SUPPORT2, reply_markup=keyboard_support, parse_mode='Markdown')    
-    
+##@bot.message_handler(chat_types=["private"])
 @bot.message_handler(func=lambda message: message.chat.type == 'private', content_types=['text', 'photo', 'document'])
 def forward_message(message: Message):
     # forward the message to the channel
     # переслать сообщение на канал
-    bot.forward_message(target_chat_id1, message.chat.id, message.message_id)
+    bot.forward_message(target_chat_id, message.chat.id, message.message_id)
 
 # create a handler function to receive responses from the channel
 # создаем функцию-обработчик для получения ответов от канала
-@bot.message_handler(chat_types=["group"], func=lambda message: message.chat.id == target_chat_id1)
+@bot.message_handler(chat_types=["group"], func=lambda message: message.chat.id == target_chat_id)
 def forward_response(message: Message):
     # check if the message was a reply to a message forwarded by the bot
     # проверить, было ли сообщение ответом на сообщение, отправленное ботом    
@@ -145,31 +135,6 @@ def forward_response(message: Message):
         # send the response back to the user
         # отправить ответ обратно пользователю
         bot.send_message(user_id, message.text)
-        
-# REC САПОРТ
-@bot.message_handler(func=lambda message: message.text == BUT_SUPPORT3)
-def handle_supportrc_option(message):
-    bot.send_message(chat_id=message.chat.id, text=MESSAGE_SUPPORT3, reply_markup=keyboard_support, parse_mode='Markdown')    
-    
-@bot.message_handler(func=lambda message: message.chat.type == 'private', content_types=['text', 'photo', 'document'])
-def forward_message(message: Message):
-    # forward the message to the channel
-    # переслать сообщение на канал
-    bot.forward_message(target_chat_id2, message.chat.id, message.message_id)
-
-# create a handler function to receive responses from the channel
-# создаем функцию-обработчик для получения ответов от канала
-@bot.message_handler(chat_types=["group"], func=lambda message: message.chat.id == target_chat_id2)
-def forward_response(message: Message):
-    # check if the message was a reply to a message forwarded by the bot
-    # проверить, было ли сообщение ответом на сообщение, отправленное ботом    
-    if message.reply_to_message and message.reply_to_message.forward_from:
-        # get the ID of the user who sent the original message
-        # получаем ID пользователя, отправившего исходное сообщение
-        user_id = message.reply_to_message.forward_from.id
-        # send the response back to the user
-        # отправить ответ обратно пользователю
-        bot.send_message(user_id, message.text)        
 
 # start the bot
 # запускаем бота
