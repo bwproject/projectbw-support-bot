@@ -108,7 +108,8 @@ def handle_main_menu_option(message):
 def handle_support_option(message):
     bot.send_message(chat_id=message.chat.id, text=MESSAGE_SUPPORT, reply_markup=keyboard_back, parse_mode='Markdown')
 
-@bot.message_handler(chat_types=["private"])
+#@bot.message_handler(chat_types=["private"])
+@bot.message_handler(func=lambda message: message.chat.type == 'private', content_types=['text', 'photo', 'document'])
 def forward_message(message: Message):
     # forward the message to the channel
     # переслать сообщение на канал
