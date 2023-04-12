@@ -108,7 +108,7 @@ def handle_main_menu_option(message):
 def handle_support_option(message):
     bot.send_message(chat_id=message.chat.id, text=MESSAGE_SUPPORT, reply_markup=keyboard_back, parse_mode='Markdown')
 
-#@bot.message_handler(chat_types=["private"])
+##@bot.message_handler(chat_types=["private"])
 @bot.message_handler(func=lambda message: message.chat.type == 'private', content_types=['text', 'photo', 'document'])
 def forward_message(message: Message):
     # forward the message to the channel
@@ -117,7 +117,8 @@ def forward_message(message: Message):
 
 # create a handler function to receive responses from the channel
 # создаем функцию-обработчик для получения ответов от канала
-@bot.message_handler(chat_types=["group"], func=lambda message: message.chat.id == target_chat_id, content_types = [ 'text' , 'photo' , ' document' ])
+##@bot.message_handler(chat_types=["group"], func=lambda message: message.chat.id == target_chat_id)
+@bot.message_handler(func=lambda message: message.chat.type == 'group', message.chat.id == target_chat_id, content_types = [ 'text' , 'photo' , ' document' ])
 def forward_response(message: Message):
     # check if the message was a reply to a message forwarded by the bot
     # проверить, было ли сообщение ответом на сообщение, отправленное ботом    
