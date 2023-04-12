@@ -118,12 +118,12 @@ def handle_main_menu_option(message):
 # define the message handler for the "Support" message
 # определяем обработчик сообщения "Поддержка"
 @bot.message_handler(func=lambda message: message.text == BUT_SUPPORT)
-def handle_support_option(message):
+def handle_supportall_option(message):
     bot.send_message(chat_id=message.chat.id, text=MESSAGE_SUPPORT, reply_markup=keyboard_support, parse_mode='Markdown')
 
 # PROJECTBW САПОРТ
 @bot.message_handler(func=lambda message: message.text == BUT_SUPPORT2)
-def handle_support_option(message):
+def handle_supportbw_option(message):
     bot.send_message(chat_id=message.chat.id, text=MESSAGE_SUPPORT2, reply_markup=keyboard_back, parse_mode='Markdown')    
     
 @bot.message_handler(func=lambda message: message.chat.type == 'private', content_types=['text', 'photo', 'document'])
@@ -149,7 +149,7 @@ def forward_response(message: Message):
         
 # REC САПОРТ
 @bot.message_handler(func=lambda message: message.text == BUT_SUPPORT3)
-def handle_support_option(message):
+def handle_supportrc_option(message):
     bot.send_message(chat_id=message.chat.id, text=MESSAGE_SUPPORT3, reply_markup=keyboard_back, parse_mode='Markdown')    
     
 @bot.message_handler(func=lambda message: message.chat.type == 'private', content_types=['text', 'photo', 'document'])
