@@ -10,8 +10,14 @@ from message.button import BUT_FAQ, BUT_SUPPORT, BUT_BACK, BUT_MENU, BUT_BOT
 
 from message.faq import FAQ_1, FAQ_1_1, FAQ_2, FAQ_2_1, FAQ_3, FAQ_3_1, FAQ_ALL, FAQ_ALL_1
 
+
+photo1 = open('/img/5726DD2C-E438-4FD0-A371-0CE0CE6C4659.jpeg', 'rb')
+
+print()
 print("Projectbw-bot")
+print()
 print("https://github.com/bwproject/projectbw-support-bot")
+print()
 
 # set the username or ID of the channel you want to get the ID for
 # установите имя пользователя или идентификатор канала, для которого вы хотите получить идентификатор
@@ -96,8 +102,8 @@ def handle_main_menu_option(message):
 
 @bot.message_handler(func=lambda message: message.text == BUT_BOT)
 def handle_main_menu_option(message):
-    photo1 = open('/img/5726DD2C-E438-4FD0-A371-0CE0CE6C4659.jpeg', 'rb')
     bot.send_photo(chat_id=message.chat.id, photo=photo1)
+def handle_main_menu_option(message):    
     bot.send_message(chat_id=message.chat.id, text=MESSAGE_BOT, reply_markup=keyboard_main, parse_mode='Markdown')
 
 # define the message handler for the "Support" message
