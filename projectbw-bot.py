@@ -96,7 +96,7 @@ def handle_main_menu_option(message):
 
 @bot.message_handler(func=lambda message: message.text == BUT_BOT)
 def handle_main_menu_option(message):
-    photo = open('/img/', 'rb')
+    photo = open('/img/5726DD2C-E438-4FD0-A371-0CE0CE6C4659.jpeg', 'rb')
     bot.send_photo(chat_id, photo)
     bot.send_message(chat_id=message.chat.id, text=MESSAGE_BOT, reply_markup=keyboard_main, parse_mode='Markdown')
 
