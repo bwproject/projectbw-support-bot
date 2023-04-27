@@ -139,3 +139,5 @@ def forward_response(message: Message):
 # start the bot
 # запускаем бота
 bot.polling()
+# The_Mr_Mes109
+# Projectbw.ru
